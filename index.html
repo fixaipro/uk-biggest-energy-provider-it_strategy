@@ -447,6 +447,207 @@ footer {
 .fu:nth-child(8){transition-delay:.56s}
 
 /* ── RESPONSIVE ── */
+
+/* ── MARTECH STACK DIAGRAM ── */
+.stack-section { background: #050505; padding: 100px 48px; }
+.stack-inner { max-width: 1280px; margin: 0 auto; }
+
+/* Layer architecture */
+.arch-diagram { margin-top: 56px; display: flex; flex-direction: column; gap: 3px; }
+
+.arch-layer {
+  display: grid;
+  align-items: stretch;
+  gap: 3px;
+  position: relative;
+}
+
+.layer-label {
+  display: flex; align-items: center; justify-content: center;
+  writing-mode: vertical-lr; text-orientation: mixed;
+  transform: rotate(180deg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: #333;
+  background: #0D0D0D; padding: 12px 10px;
+  border-left: 2px solid #1A1A1A; white-space: nowrap;
+  min-width: 36px;
+}
+
+.layer-label.lbl-green { color: var(--green); border-left-color: var(--green); }
+.layer-label.lbl-amber { color: var(--amber); border-left-color: var(--amber); }
+.layer-label.lbl-red { color: var(--red); border-left-color: var(--red); }
+.layer-label.lbl-blue { color: #60A5FA; border-left-color: #60A5FA; }
+.layer-label.lbl-purple { color: #C084FC; border-left-color: #C084FC; }
+.layer-label.lbl-cyan { color: #22D3EE; border-left-color: #22D3EE; }
+
+.layer-content { display: flex; gap: 3px; flex: 1; flex-wrap: nowrap; }
+
+/* Node cards */
+.node {
+  background: #111; border: 1px solid #222;
+  padding: 14px 16px; flex: 1; min-width: 0;
+  position: relative; overflow: hidden;
+  cursor: default;
+  transition: background .2s, border-color .2s, transform .15s;
+}
+.node:hover { background: #1A1A1A; transform: translateY(-2px); z-index: 10; }
+.node::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--node-color, #333); transition: opacity .2s;
+}
+.node:hover::before { opacity: 1; }
+
+.node-icon { font-size: 18px; margin-bottom: 8px; display: block; }
+.node-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .5px; color: #E8E8E8; margin-bottom: 4px;
+  line-height: 1.2;
+}
+.node-sub { font-size: 10px; font-weight: 300; color: #555; line-height: 1.4; }
+.node-badge {
+  position: absolute; top: 8px; right: 8px;
+  font-family: 'JetBrains Mono', monospace; font-size: 8px;
+  padding: 2px 6px; border-radius: 2px; font-weight: 700; letter-spacing: .5px;
+}
+.badge-live { background: var(--green); color: #000; }
+.badge-wip { background: var(--amber); color: #000; }
+.badge-planned { background: #333; color: #888; border: 1px solid #444; }
+.badge-risk { background: var(--red); color: #fff; }
+
+/* Node colour variants */
+.node.n-green { --node-color: var(--green); }
+.node.n-amber { --node-color: var(--amber); }
+.node.n-red { --node-color: var(--red); }
+.node.n-blue { --node-color: #60A5FA; }
+.node.n-purple { --node-color: #C084FC; }
+.node.n-cyan { --node-color: #22D3EE; }
+.node.n-dim { --node-color: #333; }
+
+/* Connector arrows between layers */
+.layer-connector {
+  display: flex; align-items: center; justify-content: center;
+  height: 32px; position: relative; gap: 3px;
+}
+.connector-line {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 0;
+}
+.connector-line .cl { height: 100%; width: 1px; background: #222; margin: 0 auto; }
+.connector-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  color: #333; letter-spacing: 1px; text-align: center;
+  white-space: nowrap; padding: 0 16px;
+}
+
+/* Tech stack grid */
+.tech-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+  margin-top: 3px;
+  background: #0D0D0D;
+  border: 1px solid #1A1A1A;
+}
+.tech-category { background: #0A0A0A; padding: 24px 20px; }
+.tech-cat-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 16px; padding-bottom: 10px;
+  border-bottom: 1px solid #1A1A1A; display: flex;
+  align-items: center; gap: 8px;
+}
+.tech-cat-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.tech-tool {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 0; border-bottom: 1px solid #111;
+}
+.tech-tool:last-child { border-bottom: none; }
+.tech-tool-name { font-size: 12px; font-weight: 500; color: #BBB; flex: 1; }
+.tech-tool-status {
+  font-family: 'JetBrains Mono', monospace; font-size: 8px;
+  padding: 2px 6px; border-radius: 1px; font-weight: 700; letter-spacing: .3px;
+}
+
+/* Legend */
+.stack-legend {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  margin-top: 24px; padding-top: 24px;
+  border-top: 1px solid #1A1A1A;
+}
+.legend-item { display: flex; align-items: center; gap: 8px; }
+.legend-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+.legend-text { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #555; letter-spacing: .5px; }
+
+/* Maturity matrix */
+.maturity-wrap {
+  background: #0A0A0A; border: 1px solid #1A1A1A;
+  padding: 40px; margin-top: 48px; position: relative;
+}
+.maturity-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px; font-weight: 700; text-transform: uppercase;
+  color: var(--white); letter-spacing: 1px; margin-bottom: 32px;
+}
+.matrix-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 3px; height: 360px; position: relative;
+}
+.matrix-cell {
+  background: #111; border: 1px solid #1A1A1A;
+  padding: 20px; display: flex; flex-direction: column;
+  justify-content: flex-end; position: relative;
+  transition: background .2s;
+}
+.matrix-cell:hover { background: #161616; }
+.matrix-cell-tag {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  font-weight: 700; letter-spacing: 1px;
+  margin-bottom: 6px; text-transform: uppercase;
+}
+.matrix-cell-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; font-weight: 700; text-transform: uppercase;
+  color: var(--white); line-height: 1.1; margin-bottom: 4px;
+}
+.matrix-cell-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px; font-weight: 900; line-height: 1;
+}
+.matrix-cell-pri {
+  position: absolute; top: 12px; right: 12px;
+  font-family: 'JetBrains Mono', monospace; font-size: 8px;
+  color: #333; font-weight: 700; letter-spacing: 1px;
+}
+.matrix-axes {
+  display: grid; grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr auto;
+  gap: 0;
+}
+.matrix-x-label {
+  text-align: center; padding-top: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: #444; grid-column: 2;
+}
+.matrix-y-label {
+  writing-mode: vertical-lr; transform: rotate(180deg);
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: #444; padding-right: 12px; grid-row: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+
+@media(max-width:960px){
+  .stack-section { padding: 64px 24px; }
+  .arch-layer { flex-direction: column; }
+  .layer-label { writing-mode: horizontal-tb; transform: none; padding: 8px 12px; min-width: auto; }
+  .tech-stack-grid { grid-template-columns: repeat(2,1fr); }
+  .matrix-grid { grid-template-columns: repeat(2,1fr); height: auto; }
+}
+
 @media(max-width:960px){
   nav { padding: 0 20px; }
   .nav-right { display: none; }
@@ -484,7 +685,8 @@ footer {
     <a href="#opportunities" class="nav-pill nav-pill-dim">Opportunities</a>
     <a href="#state" class="nav-pill nav-pill-dim">Architecture</a>
     <a href="#recommendations" class="nav-pill nav-pill-dim">Recommendations</a>
-    <a href="#solutions" class="nav-pill nav-pill-green">Solutions</a>
+    <a href="#solutions" class="nav-pill nav-pill-dim">Solutions</a>
+    <a href="#martech-stack" class="nav-pill nav-pill-green">MarTech Stack</a>
   </div>
 </nav>
 
@@ -1000,6 +1202,366 @@ footer {
     </div>
   </section>
 </div>
+
+
+<!-- MARTECH STACK DIAGRAM -->
+<div class="stack-section" id="martech-stack">
+  <div class="stack-inner">
+
+    <div class="sec-eyebrow">
+      <div class="sec-num" style="color:var(--green)">08</div>
+      <div class="sec-line" style="background:#222"></div>
+      <div class="sec-tag" style="color:#555">MarTech Architecture · Full Stack Diagram</div>
+    </div>
+    <h2 class="sec-h2" style="color:var(--white)">MarTech <em>Excellence</em> Architecture</h2>
+    <p class="sec-intro" style="color:#555">End-to-end view of Shell's paid media technology stack — from customer data signals through to ad platform activation. Mapped across current state, work-in-progress, and planned future state initiatives.</p>
+
+    <!-- FULL ARCHITECTURE DIAGRAM -->
+    <div class="arch-diagram">
+
+      <!-- LAYER 1: CUSTOMER SIGNALS -->
+      <div class="arch-layer" style="grid-template-columns:36px 1fr">
+        <div class="layer-label lbl-cyan">Customer Signals</div>
+        <div class="layer-content">
+          <div class="node n-cyan fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">🌐</span>
+            <div class="node-title">Shell Web</div>
+            <div class="node-sub">chase.co.uk · Browser interactions · Adobe Launch tag container</div>
+          </div>
+          <div class="node n-cyan fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">📱</span>
+            <div class="node-title">Shell App</div>
+            <div class="node-sub">iOS + Android · Go+ Loyalty App · Mobile SDK interactions</div>
+          </div>
+          <div class="node n-cyan fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">🏪</span>
+            <div class="node-title">POS / POI</div>
+            <div class="node-sub">Point of Sale · Point of Interest · Physical channel data</div>
+          </div>
+          <div class="node n-cyan fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">👤</span>
+            <div class="node-title">CRM</div>
+            <div class="node-sub">Customer relationship data · Loyalty programme profiles · SSO / Offer ID</div>
+          </div>
+          <div class="node n-cyan fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">🤝</span>
+            <div class="node-title">AMC + Partnerships</div>
+            <div class="node-sub">Amazon Marketing Cloud · Partner data feeds · Retail media signals</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer-connector fu"><div class="connector-line"><div class="cl"></div></div><div class="connector-label">↓ RAW EVENT STREAMS ↓</div><div class="connector-line"><div class="cl"></div></div></div>
+
+      <!-- LAYER 2: CONSENT + TAG MANAGEMENT -->
+      <div class="arch-layer" style="grid-template-columns:36px 1fr">
+        <div class="layer-label lbl-amber">Consent Gate</div>
+        <div class="layer-content">
+          <div class="node n-amber fu" style="flex:1.5">
+            <span class="node-badge badge-wip">WIP</span>
+            <span class="node-icon">🔐</span>
+            <div class="node-title">Consent Management Platform</div>
+            <div class="node-sub">OneTrust / TIQ · Stores consent server-side · In-app opt-out · Target: 40% opt-in rate (vs current 20%)</div>
+          </div>
+          <div class="node n-amber fu" style="flex:2">
+            <span class="node-badge badge-wip">WIP</span>
+            <span class="node-icon">🏷️</span>
+            <div class="node-title">Tag &amp; Event Management · Tealium</div>
+            <div class="node-sub">Client-side SDK (Web + App) · Server-side CAPI container · Replaces Adobe Launch · Reduces 3PC loss from 80% → 30%</div>
+          </div>
+          <div class="node n-red fu" style="flex:1">
+            <span class="node-badge badge-risk">Risk</span>
+            <span class="node-icon">⚠️</span>
+            <div class="node-title">Evidon (Legacy)</div>
+            <div class="node-sub">Current CMP · Not fit for purpose · Replacement in evaluation</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer-connector fu"><div class="connector-line"><div class="cl"></div></div><div class="connector-label">↓ CONSENTED + SERVER-SIDE EVENTS ↓</div><div class="connector-line"><div class="cl"></div></div></div>
+
+      <!-- LAYER 3: ANALYTICS + MEASUREMENT -->
+      <div class="arch-layer" style="grid-template-columns:36px 1fr">
+        <div class="layer-label lbl-blue">Analytics</div>
+        <div class="layer-content">
+          <div class="node n-blue fu">
+            <span class="node-badge badge-wip">WIP</span>
+            <span class="node-icon">📊</span>
+            <div class="node-title">GA4 Enterprise</div>
+            <div class="node-sub">GDPR-compliant · Regional EU servers · IP discarding · Cross-device · Replaces Universal Analytics</div>
+          </div>
+          <div class="node n-blue fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">🔬</span>
+            <div class="node-title">Adobe Analytics</div>
+            <div class="node-sub">AEP · 1P pixel (fires regardless of opt-in) · Short-term mitigation against UA sunset</div>
+          </div>
+          <div class="node n-blue fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">📍</span>
+            <div class="node-title">Kochava MMP</div>
+            <div class="node-sub">Mobile attribution · SKAN 4.0 · iOS + Android · App-to-web journey attribution · Already deployed globally</div>
+          </div>
+          <div class="node n-blue fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">🎯</span>
+            <div class="node-title">Adobe AEP</div>
+            <div class="node-sub">Audience Manager · Real-time CDP (limited activation) · Content personalisation triggers</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer-connector fu"><div class="connector-line"><div class="cl"></div></div><div class="connector-label">↓ ENRICHED PROFILES + AUDIENCE SEGMENTS ↓</div><div class="connector-line"><div class="cl"></div></div></div>
+
+      <!-- LAYER 4: IDENTITY + CDP -->
+      <div class="arch-layer" style="grid-template-columns:36px 1fr">
+        <div class="layer-label lbl-purple">Identity &amp; CDP</div>
+        <div class="layer-content">
+          <div class="node n-purple fu" style="flex:1.5">
+            <span class="node-badge badge-planned">Planned</span>
+            <span class="node-icon">🔗</span>
+            <div class="node-title">Identity Resolution</div>
+            <div class="node-sub">LiveRamp / Tealium · Replaces ECID (3PC-based) · Common cross-platform ID · Persistent profile stitching across devices</div>
+          </div>
+          <div class="node n-purple fu" style="flex:1.5">
+            <span class="node-badge badge-planned">Planned</span>
+            <span class="node-icon">🧠</span>
+            <div class="node-title">Customer Data Platform</div>
+            <div class="node-sub">Audience Streams · Cross-device visitor stitching · Real-time segmentation · Replaces AAM · Extends 1P data across full journey</div>
+          </div>
+          <div class="node n-purple fu" style="flex:1">
+            <span class="node-badge badge-planned">Planned</span>
+            <span class="node-icon">🏛️</span>
+            <div class="node-title">Data Clean Rooms</div>
+            <div class="node-sub">Infosum · AMC · Habu/Snowflake · Privacy-safe data collaboration · Measurement without 3PC</div>
+          </div>
+          <div class="node n-dim fu" style="flex:1">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">☁️</span>
+            <div class="node-title">Azure Data Lake</div>
+            <div class="node-sub">Adobe Campaign · CCX · LOD · CRM &amp; Loyalty data · First and third party datasets</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer-connector fu"><div class="connector-line"><div class="cl"></div></div><div class="connector-label">↓ VALIDATED · DEDUPLICATED · CONSENTED AUDIENCES ↓</div><div class="connector-line"><div class="cl"></div></div></div>
+
+      <!-- LAYER 5: ACTIVATION -->
+      <div class="arch-layer" style="grid-template-columns:36px 1fr">
+        <div class="layer-label lbl-green">Activation</div>
+        <div class="layer-content">
+          <div class="node n-green fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">📺</span>
+            <div class="node-title">Display · DV360</div>
+            <div class="node-sub">Programmatic · Google Display Network · DV360 already in use at Shell</div>
+          </div>
+          <div class="node n-green fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">📘</span>
+            <div class="node-title">Social · Meta CAPI</div>
+            <div class="node-sub">Facebook · Instagram · Server-side CAPI event integration · TikTok CAPI</div>
+          </div>
+          <div class="node n-green fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">🔍</span>
+            <div class="node-title">Search · GMP</div>
+            <div class="node-sub">Google Ads · Google Marketing Platform · Search campaign optimisation</div>
+          </div>
+          <div class="node n-green fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">✨</span>
+            <div class="node-title">Smartly.io · DCO</div>
+            <div class="node-sub">Dynamic Creative Optimisation · Automated creative personalisation · Cross-channel</div>
+          </div>
+          <div class="node n-green fu">
+            <span class="node-badge badge-planned">Planned</span>
+            <span class="node-icon">🏢</span>
+            <div class="node-title">B2B · LMAs</div>
+            <div class="node-sub">6Sense · Madison Logic · Onboarding to Shell IT support · Account-based targeting</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer-connector fu"><div class="connector-line"><div class="cl"></div></div><div class="connector-label">↓ CAMPAIGN SIGNALS → MEASUREMENT LOOP ↓</div><div class="connector-line"><div class="cl"></div></div></div>
+
+      <!-- LAYER 6: OWNED CHANNELS + CRM -->
+      <div class="arch-layer" style="grid-template-columns:36px 1fr">
+        <div class="layer-label lbl-cyan" style="color:#22D3EE">Owned + CRM</div>
+        <div class="layer-content">
+          <div class="node n-cyan fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">📧</span>
+            <div class="node-title">Email · Adobe Campaign</div>
+            <div class="node-sub">ACS / ACC · Triggered email comms · Opt-in required for CRM</div>
+          </div>
+          <div class="node n-cyan fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">🔔</span>
+            <div class="node-title">Push · Urban Airship</div>
+            <div class="node-sub">App push notifications · In-app messages · IDFA-dependent — risk from ATT opt-outs</div>
+          </div>
+          <div class="node n-cyan fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">💬</span>
+            <div class="node-title">Messaging · Sinch</div>
+            <div class="node-sub">SMS · Line · Viber · WhatsApp · Multi-channel messaging platform</div>
+          </div>
+          <div class="node n-cyan fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">🎯</span>
+            <div class="node-title">Personalisation · Adobe Target</div>
+            <div class="node-sub">Website personalisation · A/B testing · ODE Offers engine · AEP orchestration</div>
+          </div>
+          <div class="node n-dim fu">
+            <span class="node-badge badge-live">Live</span>
+            <span class="node-icon">📈</span>
+            <div class="node-title">Agency Partners</div>
+            <div class="node-sub">EssenceMediacom · Merkle · Sprinklr · DSP + Ad Exchange + Publisher management</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STACK LEGEND -->
+    <div class="stack-legend fu">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div><div class="legend-text">Live / In Production</div></div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div><div class="legend-text">Work In Progress (WIP)</div></div>
+      <div class="legend-item"><div class="legend-dot" style="background:#555"></div><div class="legend-text">Planned / In Evaluation</div></div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div><div class="legend-text">At Risk / Legacy</div></div>
+      <div class="legend-item" style="margin-left:auto"><div class="legend-text" style="color:#333">Source: Shell Paid Media IT Strategy — July 2023</div></div>
+    </div>
+
+    <!-- TECH STACK INVESTMENT TABLE -->
+    <div style="margin-top:64px">
+      <div class="sec-eyebrow" style="margin-bottom:24px">
+        <div class="sec-num" style="color:var(--green)">08b</div>
+        <div class="sec-line" style="background:#222"></div>
+        <div class="sec-tag" style="color:#555">Full MarTech Stack · Investment Register</div>
+      </div>
+      <h2 class="sec-h2" style="color:var(--white);margin-bottom:8px">Technology <em>Stack</em></h2>
+      <p class="sec-intro" style="color:#555;margin-bottom:32px">Complete inventory of Shell's paid media technology platforms — mapped by function, deployment status, and strategic priority.</p>
+
+      <div class="tech-stack-grid">
+        <!-- Consent & Privacy -->
+        <div class="tech-category fu">
+          <div class="tech-cat-label"><div class="tech-cat-dot" style="background:var(--amber)"></div><span style="color:var(--amber)">Consent &amp; Privacy</span></div>
+          <div class="tech-tool"><div class="tech-tool-name">OneTrust / TIQ</div><div class="tech-tool-status" style="background:var(--amber);color:#000">WIP</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Evidon</div><div class="tech-tool-status" style="background:var(--red);color:#fff">Legacy</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">TrustArc</div><div class="tech-tool-status" style="background:#222;color:#666;border:1px solid #333">Eval</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">UserCentrics</div><div class="tech-tool-status" style="background:#222;color:#666;border:1px solid #333">Eval</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Quantcast Choice</div><div class="tech-tool-status" style="background:#222;color:#666;border:1px solid #333">Eval</div></div>
+        </div>
+
+        <!-- Data Collection -->
+        <div class="tech-category fu">
+          <div class="tech-cat-label"><div class="tech-cat-dot" style="background:var(--green)"></div><span style="color:var(--green)">Data Collection</span></div>
+          <div class="tech-tool"><div class="tech-tool-name">Tealium Event Streams</div><div class="tech-tool-status" style="background:var(--amber);color:#000">WIP</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Adobe Launch</div><div class="tech-tool-status" style="background:var(--green);color:#000">Live</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Google DV360</div><div class="tech-tool-status" style="background:var(--green);color:#000">Live</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Meta CAPI</div><div class="tech-tool-status" style="background:var(--amber);color:#000">WIP</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Madison Logic</div><div class="tech-tool-status" style="background:#222;color:#666;border:1px solid #333">LMA</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">6Sense</div><div class="tech-tool-status" style="background:#222;color:#666;border:1px solid #333">LMA</div></div>
+        </div>
+
+        <!-- Analytics & Measurement -->
+        <div class="tech-category fu">
+          <div class="tech-cat-label"><div class="tech-cat-dot" style="background:#60A5FA"></div><span style="color:#60A5FA">Analytics</span></div>
+          <div class="tech-tool"><div class="tech-tool-name">Adobe Analytics (AEP)</div><div class="tech-tool-status" style="background:var(--green);color:#000">Live</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Google Analytics 4</div><div class="tech-tool-status" style="background:var(--amber);color:#000">WIP</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Kochava MMP</div><div class="tech-tool-status" style="background:var(--green);color:#000">Live</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">GA Universal</div><div class="tech-tool-status" style="background:var(--red);color:#fff">Sunset</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Adobe Audience Mgr</div><div class="tech-tool-status" style="background:var(--amber);color:#000">Review</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Amazon Marketing Cloud</div><div class="tech-tool-status" style="background:var(--amber);color:#000">Pilot</div></div>
+        </div>
+
+        <!-- Identity & CDP -->
+        <div class="tech-category fu">
+          <div class="tech-cat-label"><div class="tech-cat-dot" style="background:#C084FC"></div><span style="color:#C084FC">Identity &amp; CDP</span></div>
+          <div class="tech-tool"><div class="tech-tool-name">LiveRamp</div><div class="tech-tool-status" style="background:#222;color:#666;border:1px solid #333">Planned</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Tealium AudienceStream</div><div class="tech-tool-status" style="background:var(--amber);color:#000">WIP</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Treasure Data CDP</div><div class="tech-tool-status" style="background:#222;color:#666;border:1px solid #333">Eval</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Infosum DCR</div><div class="tech-tool-status" style="background:var(--amber);color:#000">Pilot</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Habu / Snowflake</div><div class="tech-tool-status" style="background:#222;color:#666;border:1px solid #333">Eval</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">ECID (Legacy)</div><div class="tech-tool-status" style="background:var(--red);color:#fff">Risk</div></div>
+        </div>
+
+        <!-- Owned + Activation -->
+        <div class="tech-category fu">
+          <div class="tech-cat-label"><div class="tech-cat-dot" style="background:#22D3EE"></div><span style="color:#22D3EE">Activation</span></div>
+          <div class="tech-tool"><div class="tech-tool-name">Adobe Campaign (ACS)</div><div class="tech-tool-status" style="background:var(--green);color:#000">Live</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Smartly.io (DCO)</div><div class="tech-tool-status" style="background:var(--green);color:#000">Live</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Urban Airship</div><div class="tech-tool-status" style="background:var(--green);color:#000">Live</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Adobe Target</div><div class="tech-tool-status" style="background:var(--green);color:#000">Live</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">Sinch (SMS/Msg)</div><div class="tech-tool-status" style="background:var(--green);color:#000">Live</div></div>
+          <div class="tech-tool"><div class="tech-tool-name">EssenceMediacom</div><div class="tech-tool-status" style="background:var(--green);color:#000">Live</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MATURITY MATRIX -->
+    <div class="maturity-wrap fu" style="margin-top:64px">
+      <div class="maturity-title">Opportunities · Value / Maturity Matrix — Priority Map</div>
+      <div class="matrix-axes">
+        <div class="matrix-y-label">↑ Business Value</div>
+        <div>
+          <div class="matrix-grid">
+            <!-- High Value, Low Maturity -->
+            <div class="matrix-cell" style="border-top:3px solid var(--red)">
+              <div class="matrix-cell-pri">P1</div>
+              <div class="matrix-cell-tag" style="color:var(--red)">High Value · Low Maturity</div>
+              <div class="matrix-cell-name">Consent Management Platform</div>
+              <div class="matrix-cell-value" style="color:var(--green)">$70M</div>
+            </div>
+            <!-- High Value, Mid Maturity -->
+            <div class="matrix-cell" style="border-top:3px solid var(--amber)">
+              <div class="matrix-cell-pri">P2</div>
+              <div class="matrix-cell-tag" style="color:var(--amber)">High Value · Mid Maturity</div>
+              <div class="matrix-cell-name">Event Streams · CAPI</div>
+              <div class="matrix-cell-value" style="color:var(--green)">$8M</div>
+            </div>
+            <!-- High Value, High Maturity -->
+            <div class="matrix-cell" style="border-top:3px solid var(--green)">
+              <div class="matrix-cell-pri">P3</div>
+              <div class="matrix-cell-tag" style="color:var(--green)">High Value · High Maturity</div>
+              <div class="matrix-cell-name">Google Analytics 4</div>
+              <div class="matrix-cell-value" style="color:var(--green)">$2M</div>
+            </div>
+            <!-- Mid Value, Low Maturity -->
+            <div class="matrix-cell" style="border-top:3px solid #444">
+              <div class="matrix-cell-pri">P4</div>
+              <div class="matrix-cell-tag" style="color:#555">Mid Value · Low Maturity</div>
+              <div class="matrix-cell-name">Audience Streams · CDP</div>
+              <div class="matrix-cell-value" style="color:#777">$3M</div>
+            </div>
+            <!-- Mid Value, Mid Maturity -->
+            <div class="matrix-cell" style="border-top:3px solid #444">
+              <div class="matrix-cell-pri">P5</div>
+              <div class="matrix-cell-tag" style="color:#555">Mid Value · Mid Maturity</div>
+              <div class="matrix-cell-name">Data Clean Rooms</div>
+              <div class="matrix-cell-value" style="color:#777">$3M</div>
+            </div>
+            <!-- Mid Value, High Maturity -->
+            <div class="matrix-cell" style="border-top:3px solid #444">
+              <div class="matrix-cell-pri">P6</div>
+              <div class="matrix-cell-tag" style="color:#555">Mid Value · High Maturity</div>
+              <div class="matrix-cell-name">Identity Resolution</div>
+              <div class="matrix-cell-value" style="color:#777">$8M</div>
+            </div>
+          </div>
+          <div class="matrix-x-label">MarTech Maturity →</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 <!-- FOOTER -->
 <footer>
