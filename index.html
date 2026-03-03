@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Shell · Paid Media AdTech — IT Strategy & Assessment 2023</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --green: #86BC25;
+  --green-dark: #5A8A0F;
+  --green-dim: rgba(134,188,37,0.12);
+  --black: #000000;
+  --ink: #0A0A0A;
+  --dark: #111111;
+  --dark2: #1A1A1A;
+  --mid: #3A3A3A;
+  --muted: #6B6B6B;
+  --light: #D0D0CE;
+  --pale: #F0F0EE;
+  --white: #FFFFFF;
+  --red: #D62B1F;
+  --amber: #E8A000;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--pale); }
+::-webkit-scrollbar-thumb { background: var(--green); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: var(--black);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 56px;
+  border-bottom: 2px solid var(--green);
+}
+.nav-left { display: flex; align-items: center; gap: 20px; }
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-dot { width: 10px; height: 10px; background: var(--green); border-radius: 50%; animation: blink 2.5s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+.nav-brand { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--white); }
+.nav-divider { width: 1px; height: 24px; background: var(--mid); }
+.nav-sub { font-size: 11px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+.nav-right { display: flex; align-items: center; gap: 6px; }
+.nav-pill { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; padding: 4px 10px; border: 1px solid; border-radius: 2px; letter-spacing: .5px; cursor: pointer; transition: all .15s; text-decoration: none; }
+.nav-pill-green { color: var(--green); border-color: var(--green); }
+.nav-pill-green:hover { background: var(--green); color: var(--black); }
+.nav-pill-dim { color: var(--muted); border-color: var(--mid); }
+.nav-pill-dim:hover { color: var(--white); border-color: var(--white); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--black);
+  padding: 120px 48px 80px;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  align-items: center;
+}
+.hero-grid-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(134,188,37,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(134,188,37,.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-glow {
+  position: absolute; top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(134,188,37,.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--green); margin-bottom: 28px;
+}
+.hero-label::before { content:''; width:24px; height:1px; background:var(--green); }
+.hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(48px, 6vw, 84px);
+  font-weight: 800;
+  line-height: .95;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  color: var(--white);
+  margin-bottom: 28px;
+}
+.hero h1 .accent { color: var(--green); display: block; }
+.hero h1 .sub-line { font-weight: 300; font-size: .55em; letter-spacing: 1px; color: var(--light); display: block; margin-top: 8px; text-transform: none; }
+.hero-desc {
+  font-size: 16px; font-weight: 300; color: #9A9A9A; line-height: 1.7;
+  max-width: 500px; margin-bottom: 48px; border-left: 2px solid var(--green); padding-left: 20px;
+}
+.hero-meta-row { display: flex; gap: 40px; flex-wrap: wrap; }
+.hero-meta-item { display: flex; flex-direction: column; }
+.hero-meta-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 36px; font-weight: 900; color: var(--white); line-height: 1;
+}
+.hero-meta-val span { color: var(--green); font-size: .7em; }
+.hero-meta-lbl { font-size: 11px; font-weight: 400; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+/* Right panel */
+.hero-right { position: relative; }
+.crisis-card {
+  background: var(--dark); border: 1px solid var(--mid);
+  border-top: 3px solid var(--red); padding: 32px; margin-bottom: 16px;
+  position: relative;
+}
+.crisis-card-title {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--red); margin-bottom: 14px;
+}
+.crisis-stat-row { display: flex; gap: 24px; flex-wrap: wrap; }
+.c-stat { display: flex; flex-direction: column; }
+.c-num { font-family: 'Barlow Condensed', sans-serif; font-size: 48px; font-weight: 900; color: var(--white); line-height: 1; }
+.c-num .u { font-size: .5em; color: var(--red); }
+.c-lbl { font-size: 11px; color: #777; margin-top: 4px; max-width: 120px; line-height: 1.4; }
+.risk-card {
+  background: linear-gradient(135deg, #0A1A00, #111);
+  border: 1px solid rgba(134,188,37,.3); padding: 24px 32px;
+  display: flex; align-items: center; gap: 20px;
+}
+.risk-icon { font-size: 32px; flex-shrink: 0; }
+.risk-text h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; color: var(--green); }
+.risk-text p { font-size: 12px; color: #777; margin-top: 4px; line-height: 1.5; }
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--green); padding: 12px 0; overflow: hidden;
+  white-space: nowrap; position: relative;
+}
+.ticker-inner { display: inline-flex; animation: ticker 30s linear infinite; }
+.ticker-item {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 0 36px; font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--black);
+}
+.ticker-item::after { content: '|'; color: rgba(0,0,0,.25); margin-left: 36px; }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── SECTIONS ── */
+.section { padding: 100px 48px; max-width: 1280px; margin: 0 auto; }
+.section-full { padding: 100px 48px; }
+.section-full-inner { max-width: 1280px; margin: 0 auto; }
+
+.sec-eyebrow {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+}
+.sec-num {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  font-weight: 500; color: var(--green); letter-spacing: 1px;
+}
+.sec-line { flex: 1; height: 1px; background: var(--light); max-width: 40px; }
+.sec-tag {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
+}
+.sec-h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(36px, 4vw, 56px); font-weight: 800;
+  line-height: 1; text-transform: uppercase; letter-spacing: -.5px;
+  color: var(--ink); margin-bottom: 12px;
+}
+.sec-h2 em { font-style: normal; color: var(--green); }
+.sec-intro {
+  font-size: 15px; font-weight: 300; color: var(--muted);
+  max-width: 640px; line-height: 1.7; margin-bottom: 56px;
+}
+
+/* ── DRIVERS GRID ── */
+.drivers-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; background: var(--light); border: 1px solid var(--light); margin-bottom: 48px; }
+.driver-card {
+  background: var(--white); padding: 32px 28px;
+  border-top: 3px solid transparent; transition: border-color .2s, background .2s;
+  position: relative; overflow: hidden;
+}
+.driver-card:hover { background: #F8F8F6; border-top-color: var(--green); }
+.driver-num { font-family: 'Barlow Condensed', sans-serif; font-size: 72px; font-weight: 900; color: var(--pale); line-height: 1; position: absolute; top: 8px; right: 16px; pointer-events: none; }
+.driver-icon { font-size: 28px; margin-bottom: 14px; }
+.driver-title { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--ink); margin-bottom: 10px; }
+.driver-body { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+.driver-body strong { font-weight: 600; color: var(--ink); }
+
+/* ── KEY DATA CALLOUT ── */
+.data-callout {
+  background: var(--black); padding: 56px 48px;
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 2px; background: var(--black); border: none;
+}
+.data-cell {
+  background: var(--dark); padding: 36px 28px;
+  border-top: 3px solid var(--green); position: relative;
+}
+.data-big {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 64px; font-weight: 900; color: var(--green);
+  line-height: 1; margin-bottom: 8px;
+}
+.data-big .pct { font-size: .6em; }
+.data-label { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+.data-desc { font-size: 12px; font-weight: 300; color: #666; line-height: 1.6; }
+
+/* ── OPPORTUNITIES ── */
+.opps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.opp-card {
+  border: 1px solid var(--light); padding: 28px 24px;
+  position: relative; overflow: hidden; transition: transform .2s, box-shadow .2s;
+  background: var(--white);
+}
+.opp-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.08); }
+.opp-priority {
+  position: absolute; top: 0; right: 0;
+  background: var(--green); color: var(--black);
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700;
+  padding: 5px 12px; letter-spacing: 1px; text-transform: uppercase;
+}
+.opp-value {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 42px;
+  font-weight: 900; color: var(--ink); line-height: 1; margin-bottom: 6px;
+}
+.opp-value span { font-size: .45em; color: var(--muted); }
+.opp-name { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--ink); margin-bottom: 12px; }
+.opp-abbrev {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  color: var(--green); letter-spacing: 1.5px; margin-bottom: 12px;
+}
+.opp-desc { font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.6; }
+.opp-tools { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+.tool-tag {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 500;
+  padding: 3px 8px; background: var(--pale); color: var(--mid);
+  border: 1px solid var(--light); letter-spacing: .5px;
+}
+.tool-tag.active { background: var(--green); color: var(--black); border-color: var(--green); }
+
+/* ── STATE COMPARISON ── */
+.state-compare {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  background: var(--light); border: 1px solid var(--light);
+}
+.state-col { background: var(--white); }
+.state-header {
+  padding: 20px 28px;
+  display: flex; align-items: center; gap: 12px;
+  border-bottom: 1px solid var(--light);
+}
+.state-label {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 14px;
+  font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+}
+.state-label.current { color: var(--muted); }
+.state-label.future { color: var(--green); }
+.state-badge {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  padding: 3px 10px; border-radius: 2px; font-weight: 500; letter-spacing: 1px;
+}
+.state-badge.current { background: var(--pale); color: var(--muted); border: 1px solid var(--light); }
+.state-badge.future { background: var(--green); color: var(--black); }
+.state-body { padding: 24px 28px; }
+.state-row {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 0; border-bottom: 1px solid var(--pale);
+}
+.state-row:last-child { border-bottom: none; }
+.state-row-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 6px;
+}
+.dot-grey { background: var(--light); }
+.dot-green { background: var(--green); }
+.state-row-text { font-size: 13px; font-weight: 400; color: var(--ink); line-height: 1.5; }
+.state-row-text span { display: block; font-size: 11px; color: var(--muted); margin-top: 2px; font-weight: 300; }
+
+/* ── RISK BAND ── */
+.risk-band {
+  background: var(--black); padding: 80px 48px;
+}
+.risk-band-inner { max-width: 1280px; margin: 0 auto; }
+.risk-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 48px; }
+.risk-cell {
+  background: var(--dark); padding: 32px 28px;
+  border-left: 3px solid transparent;
+}
+.risk-cell.r-targeting { border-left-color: var(--red); }
+.risk-cell.r-measurement { border-left-color: var(--amber); }
+.risk-cell.r-optimisation { border-left-color: var(--green); }
+.risk-type {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 18px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--white); margin-bottom: 16px;
+}
+.risk-impact {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 48px;
+  font-weight: 900; color: var(--red); line-height: 1; margin-bottom: 8px;
+}
+.risk-impact.amber { color: var(--amber); }
+.risk-impact.green-col { color: var(--green); }
+.risk-note { font-size: 12px; font-weight: 300; color: #666; line-height: 1.6; }
+.risk-solutions { margin-top: 20px; }
+.risk-sol-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 1.5px; color: var(--green); text-transform: uppercase; margin-bottom: 8px;
+}
+.risk-sol-item { font-size: 12px; color: #888; padding: 4px 0; border-bottom: 1px solid #222; }
+
+/* ── RECOMMENDATIONS ── */
+.recs-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; background: var(--light); border: 1px solid var(--light); }
+.rec-card {
+  background: var(--white); padding: 36px 32px;
+  position: relative;
+  transition: background .2s;
+}
+.rec-card:hover { background: #F5F5F3; }
+.rec-card::before {
+  content: attr(data-step);
+  position: absolute; top: 28px; right: 28px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 80px; font-weight: 900; color: var(--pale); line-height: 1;
+  pointer-events: none;
+}
+.rec-tag {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--green);
+  margin-bottom: 12px;
+}
+.rec-title {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 24px;
+  font-weight: 800; text-transform: uppercase; letter-spacing: .5px;
+  color: var(--ink); margin-bottom: 14px;
+}
+.rec-body { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+.rec-body strong { font-weight: 600; color: var(--ink); }
+.rec-owner {
+  display: flex; align-items: center; gap: 8px; margin-top: 20px;
+  padding-top: 16px; border-top: 1px solid var(--pale);
+}
+.rec-owner-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+.rec-owner-text { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: .5px; }
+
+/* ── SOLUTIONS LANDSCAPE ── */
+.solutions-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.sol-card {
+  border: 1px solid var(--light); background: var(--white); padding: 24px;
+  transition: border-color .2s;
+}
+.sol-card:hover { border-color: var(--green); }
+.sol-cat {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--green);
+  margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+}
+.sol-cat::after { content:''; flex:1; height:1px; background:var(--green); opacity:.3; }
+.sol-title {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 17px;
+  font-weight: 700; text-transform: uppercase; color: var(--ink);
+  margin-bottom: 14px; line-height: 1.2;
+}
+.sol-list { list-style: none; }
+.sol-list li {
+  font-size: 12px; font-weight: 400; color: var(--muted);
+  padding: 6px 0; border-bottom: 1px solid var(--pale);
+  display: flex; align-items: center; gap: 8px;
+}
+.sol-list li:last-child { border-bottom: none; }
+.sol-list li::before { content:'›'; color: var(--green); font-weight: 700; font-size: 14px; }
+.sol-list li .used { font-family: 'JetBrains Mono', monospace; font-size: 9px; background: var(--green); color: var(--black); padding: 2px 6px; margin-left: auto; font-weight: 500; }
+
+/* ── MEDIA IMPACT ── */
+.media-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--light); border: 1px solid var(--light); }
+.media-cell { background: var(--black); padding: 40px 32px; }
+.media-num {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 56px;
+  font-weight: 900; color: var(--green); line-height: 1; margin-bottom: 8px;
+}
+.media-label { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+.media-note { font-size: 12px; font-weight: 300; color: #555; line-height: 1.5; }
+
+/* ── TIMELINE ── */
+.timeline { position: relative; padding-left: 24px; }
+.timeline::before { content:''; position:absolute; left:0; top:8px; bottom:8px; width:2px; background: linear-gradient(to bottom, var(--green), rgba(134,188,37,.1)); }
+.tl-item { position: relative; padding: 0 0 32px 32px; }
+.tl-item::before {
+  content:''; position:absolute; left:-7px; top:6px;
+  width:16px; height:16px; border-radius:50%;
+  background: var(--black); border: 2px solid var(--green);
+}
+.tl-year {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  font-weight: 700; color: var(--green); letter-spacing: 1px; margin-bottom: 6px;
+}
+.tl-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.tl-body { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.6; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black); padding: 48px;
+  border-top: 2px solid var(--green);
+  display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end;
+}
+.footer-left h3 {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 28px;
+  font-weight: 900; text-transform: uppercase; color: var(--white);
+  letter-spacing: .5px; margin-bottom: 8px;
+}
+.footer-left p { font-size: 13px; font-weight: 300; color: #555; line-height: 1.6; }
+.footer-right { text-align: right; }
+.footer-authors { display: flex; flex-direction: column; gap: 4px; align-items: flex-end; }
+.footer-author { font-size: 12px; font-weight: 400; color: #555; }
+.footer-author strong { color: var(--white); font-weight: 500; }
+.footer-tag {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: var(--green); letter-spacing: 1px; margin-bottom: 16px;
+}
+
+/* ── UTIL ── */
+.divider-line { height: 1px; background: var(--light); margin: 0 48px; }
+.bg-pale { background: var(--pale); }
+.bg-black { background: var(--black); }
+
+/* ── FADE UP ── */
+.fu { opacity:0; transform:translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+.fu.vis { opacity:1; transform:translateY(0); }
+.fu:nth-child(2){transition-delay:.08s}
+.fu:nth-child(3){transition-delay:.16s}
+.fu:nth-child(4){transition-delay:.24s}
+.fu:nth-child(5){transition-delay:.32s}
+.fu:nth-child(6){transition-delay:.40s}
+.fu:nth-child(7){transition-delay:.48s}
+.fu:nth-child(8){transition-delay:.56s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav { padding: 0 20px; }
+  .nav-right { display: none; }
+  .hero { grid-template-columns:1fr; padding:100px 24px 60px; gap:40px; }
+  .section { padding:64px 24px; }
+  .section-full { padding:64px 24px; }
+  .data-callout { grid-template-columns:repeat(2,1fr); }
+  .drivers-grid { grid-template-columns:1fr; }
+  .opps-grid { grid-template-columns:1fr; }
+  .state-compare { grid-template-columns:1fr; }
+  .risk-grid { grid-template-columns:1fr; }
+  .recs-grid { grid-template-columns:1fr; }
+  .solutions-grid { grid-template-columns:1fr; }
+  .media-grid { grid-template-columns:1fr; }
+  footer { grid-template-columns:1fr; }
+  .footer-right { text-align:left; }
+  .footer-authors { align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <div class="nav-logo">
+      <div class="nav-dot"></div>
+      <div class="nav-brand">Shell · AdTech Strategy</div>
+    </div>
+    <div class="nav-divider"></div>
+    <div class="nav-sub">IT Assessment · July 2023</div>
+  </div>
+  <div class="nav-right">
+    <a href="#environment" class="nav-pill nav-pill-dim">Environment</a>
+    <a href="#opportunities" class="nav-pill nav-pill-dim">Opportunities</a>
+    <a href="#state" class="nav-pill nav-pill-dim">Architecture</a>
+    <a href="#recommendations" class="nav-pill nav-pill-dim">Recommendations</a>
+    <a href="#solutions" class="nav-pill nav-pill-green">Solutions</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-left">
+    <div class="hero-label">Paid Media AdTech · IT Strategy & Assessment</div>
+    <h1>
+      Paid Media
+      <span class="accent">AdTech</span>
+      <span class="sub-line">Landscape · IT Strategy & Assessment</span>
+    </h1>
+    <p class="hero-desc">
+      A combined IT and Business AdTech strategy to navigate major industry changes over the next several years — protecting current market share and staying ahead of competitors in a post-cookie world.
+    </p>
+    <div class="hero-meta-row">
+      <div class="hero-meta-item">
+        <div class="hero-meta-val">$48<span>M</span></div>
+        <div class="hero-meta-lbl">Mobility Paid Media (2022)</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-val">$200<span>M</span></div>
+        <div class="hero-meta-lbl">Global Media Spend</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-val">$32<span>M</span></div>
+        <div class="hero-meta-lbl">Media Dollars at Risk</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="crisis-card">
+      <div class="crisis-card-title">⚠ Critical Data Gap — Right Now</div>
+      <div class="crisis-stat-row">
+        <div class="c-stat">
+          <div class="c-num">80<span class="u">%</span></div>
+          <div class="c-lbl">of cookie-based traffic already unavailable for marketing</div>
+        </div>
+        <div class="c-stat">
+          <div class="c-num">20<span class="u">%</span></div>
+          <div class="c-lbl">of total traffic actually trackable via 3PC</div>
+        </div>
+        <div class="c-stat">
+          <div class="c-num">30<span class="u">%</span></div>
+          <div class="c-lbl">current site opt-in rate impeding ad tools</div>
+        </div>
+      </div>
+    </div>
+    <div class="risk-card">
+      <div class="risk-icon">🎯</div>
+      <div class="risk-text">
+        <h4>$32M in advertising at risk</h4>
+        <p>Without first-party data strategy, up to $32M in Paid Media spend will lose targeting and measurement capability by end of 2024 when Google deprecates 3PC.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="ticker-item">3PC Deprecation · 2024</span>
+    <span class="ticker-item">GDPR · CCPA · CPRA Compliance</span>
+    <span class="ticker-item">Apple ATT · iOS 14.5+</span>
+    <span class="ticker-item">Google GAID Restriction · Q4 2023</span>
+    <span class="ticker-item">First-Party Data Imperative</span>
+    <span class="ticker-item">$220M Potential Margin Uplift</span>
+    <span class="ticker-item">Server-Side Collection</span>
+    <span class="ticker-item">Data Clean Rooms</span>
+    <span class="ticker-item">Identity Resolution</span>
+    <span class="ticker-item">Consent Management</span>
+    <span class="ticker-item">3PC Deprecation · 2024</span>
+    <span class="ticker-item">GDPR · CCPA · CPRA Compliance</span>
+    <span class="ticker-item">Apple ATT · iOS 14.5+</span>
+    <span class="ticker-item">Google GAID Restriction · Q4 2023</span>
+    <span class="ticker-item">First-Party Data Imperative</span>
+    <span class="ticker-item">$220M Potential Margin Uplift</span>
+    <span class="ticker-item">Server-Side Collection</span>
+    <span class="ticker-item">Data Clean Rooms</span>
+    <span class="ticker-item">Identity Resolution</span>
+    <span class="ticker-item">Consent Management</span>
+  </div>
+</div>
+
+<!-- ENVIRONMENT -->
+<section class="section" id="environment">
+  <div class="sec-eyebrow">
+    <div class="sec-num">01</div>
+    <div class="sec-line"></div>
+    <div class="sec-tag">Current Environment</div>
+  </div>
+  <h2 class="sec-h2">Drivers <em>for Change</em></h2>
+  <p class="sec-intro">Various market and industry changes are impacting the way Shell runs its Paid Media operations and specifically its usage of AdTech platforms. A combined IT and Business AdTech strategy is needed to navigate these changes.</p>
+
+  <div class="drivers-grid">
+    <div class="driver-card fu">
+      <div class="driver-num">01</div>
+      <div class="driver-icon">🍪</div>
+      <div class="driver-title">Deprecation of 3rd Party Cookies</div>
+      <div class="driver-body">With most major browsers and device manufacturers announcing pending deprecation of 3rd party cookies, companies will be forced to find new and alternative solutions for programmatic digital advertising. <strong>All major browsers phase out 3PC by end of 2024.</strong> FireFox (2017) → Safari (2019) → Chrome &amp; Edge (2024).</div>
+    </div>
+    <div class="driver-card fu">
+      <div class="driver-num">02</div>
+      <div class="driver-icon">⚖️</div>
+      <div class="driver-title">Regulatory Requirements</div>
+      <div class="driver-body">Regulation like <strong>GDPR, CCPA, and CPRA</strong> will severely limit what customer data can be stored and tracked. There will be a heavy focus on ensuring data collection, storage, and processing is compliant with regulations, and that consent is provided and controlled by the end user.</div>
+    </div>
+    <div class="driver-card fu">
+      <div class="driver-num">03</div>
+      <div class="driver-icon">👁️</div>
+      <div class="driver-title">End User Awareness</div>
+      <div class="driver-body">Consumers are becoming more aware and sensitive to how companies treat their data and online activity. Currently, <strong>just over 2 in 3 Go+ customers reject</strong> the use of tracking tools in the App. Shell's consent rate sits at just 20%, far below industry best practice.</div>
+    </div>
+    <div class="driver-card fu">
+      <div class="driver-num">04</div>
+      <div class="driver-icon">📱</div>
+      <div class="driver-title">Mobile Device Limitations</div>
+      <div class="driver-body"><strong>Apple ATT (iOS 14.5+)</strong> allows users to opt out of sharing tracking data and IDFA device IDs. <strong>Google will also restrict third-party access to GAID starting Q4 2023.</strong> The ATT message means Shell cannot collect IDFA if the customer opts-out or does not see it — reducing push notification audiences and app tracking.</div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="sec-eyebrow" style="margin-top:48px; margin-bottom:24px">
+    <div class="sec-num" style="color:var(--muted)">TIMELINE</div>
+    <div class="sec-line"></div>
+    <div class="sec-tag">Industry Deprecation Journey</div>
+  </div>
+  <div class="timeline">
+    <div class="tl-item fu"><div class="tl-year">2017</div><div class="tl-title">Firefox ends 3PC support</div><div class="tl-body">Ad-blocking software becomes more common. The beginning of the end for third-party cookie reliance.</div></div>
+    <div class="tl-item fu"><div class="tl-year">2018</div><div class="tl-title">GDPR &amp; CCPA Regulation</div><div class="tl-body">GDPR impacts Europe, CCPA impacts California. Data collection practices fundamentally challenged across the industry.</div></div>
+    <div class="tl-item fu"><div class="tl-year">2019</div><div class="tl-title">Apple Safari blocks 3PC</div><div class="tl-body">ITP (Intelligent Tracking Prevention) caps first-party cookies at 7 days. Safari users — a significant portion of Shell's audience — now operating without 3PC.</div></div>
+    <div class="tl-item fu"><div class="tl-year">2020</div><div class="tl-title">Apple iOS 14 phases out IDFA</div><div class="tl-body">ATT framework introduced. Users can now opt out of mobile tracking entirely — reducing Shell's targetable app audience significantly.</div></div>
+    <div class="tl-item fu"><div class="tl-year">2024</div><div class="tl-title">Google Chrome &amp; Edge · Final 3PC Deprecation</div><div class="tl-body">The last major browsers to end 3PC support. <strong>$32M in Shell Paid Media spend at risk.</strong> Companies without first-party data strategies and privacy-compliant tech stacks will face severe performance degradation.</div></div>
+  </div>
+</section>
+
+<!-- KEY DATA -->
+<div class="bg-black">
+  <div class="data-callout">
+    <div class="data-cell fu">
+      <div class="data-big">40<span class="pct">%</span></div>
+      <div class="data-label">Visitors from 3PC-blocking browsers</div>
+      <div class="data-desc">40% of total visitors in key markets are driven by browsers which block 3PC — before any consent is even requested.</div>
+    </div>
+    <div class="data-cell fu">
+      <div class="data-big">30<span class="pct">%</span></div>
+      <div class="data-label">Opt-in rate on Shell website</div>
+      <div class="data-desc">The current opt-in rate leaves 70% of consented sessions without 3PC. Combined with browser blocking, only 20% of traffic is trackable.</div>
+    </div>
+    <div class="data-cell fu">
+      <div class="data-big">20<span class="pct">%</span></div>
+      <div class="data-label">Total traffic trackable via 3PC</div>
+      <div class="data-desc">The combined effect of browser blocking and low consent rates means 80% of traffic is already lost for paid media measurement.</div>
+    </div>
+    <div class="data-cell fu">
+      <div class="data-big">$32<span style="font-size:.5em;color:var(--muted)">M</span></div>
+      <div class="data-label">Paid Media dollars at risk</div>
+      <div class="data-desc">13%–82% of total applicable spend in Programmatic, Social and Search is at risk depending on Google's Privacy Sandbox implementation.</div>
+    </div>
+  </div>
+</div>
+
+<!-- OPPORTUNITIES -->
+<section class="section" id="opportunities">
+  <div class="sec-eyebrow">
+    <div class="sec-num">02</div>
+    <div class="sec-line"></div>
+    <div class="sec-tag">Opportunities · Value / Maturity Matrix</div>
+  </div>
+  <h2 class="sec-h2">Six <em>Strategic Opportunities</em></h2>
+  <p class="sec-intro">Prioritised by business value and MarTech maturity. The combined value at risk across all six opportunity areas exceeds $94M.</p>
+
+  <div class="opps-grid">
+    <div class="opp-card fu">
+      <div class="opp-priority">Priority 1</div>
+      <div class="opp-value">$70<span>M value at risk</span></div>
+      <div class="opp-name">Consent Management Platform</div>
+      <div class="opp-abbrev">CMP</div>
+      <div class="opp-desc">Currently consent is stored on the user's browser — not stored anywhere by Shell. Customers can't opt out in the app; they have to email CSC. Consent rate is 20%. Integrating a CMP could double the consent rate to 40%+, unlocking significant paid media activation.</div>
+      <div class="opp-tools">
+        <span class="tool-tag">OneTrust</span>
+        <span class="tool-tag">TrustArc</span>
+        <span class="tool-tag">UserCentrics</span>
+        <span class="tool-tag">Osano</span>
+      </div>
+    </div>
+    <div class="opp-card fu">
+      <div class="opp-priority">Priority 2</div>
+      <div class="opp-value">$8<span>M value at risk</span></div>
+      <div class="opp-name">Event Streams · Server-Side</div>
+      <div class="opp-abbrev">CAPI · S2S Collection</div>
+      <div class="opp-desc">Server-side enablement gives Shell better control of data capture, storage, encryption and transfer to advertising tools. Reduces loss from 3PC deprecation from 80% down to 30% by collecting data server-side — bypassing browser restrictions entirely.</div>
+      <div class="opp-tools">
+        <span class="tool-tag active">Tealium ✓ WIP</span>
+        <span class="tool-tag active">DV360 ✓ In use</span>
+      </div>
+    </div>
+    <div class="opp-card fu">
+      <div class="opp-priority">Priority 3</div>
+      <div class="opp-value">$2<span>M value at risk</span></div>
+      <div class="opp-name">Google Analytics 4</div>
+      <div class="opp-abbrev">GA4 · Led by Corporate</div>
+      <div class="opp-desc">GA4 Enterprise is a GDPR-compliant, cross-device and browser solution. With Google Universal Analytics sunsetting, Shell will lose the capability to track visitor analytics until GA4 is fully operational. Critical migration that directly impacts measurement.</div>
+      <div class="opp-tools">
+        <span class="tool-tag active">GA4 ✓ WIP</span>
+        <span class="tool-tag active">Adobe Analytics ✓ In use</span>
+      </div>
+    </div>
+    <div class="opp-card fu">
+      <div class="opp-priority">Priority 4</div>
+      <div class="opp-value">$3<span>M value at risk</span></div>
+      <div class="opp-name">Audience Streams · CDP</div>
+      <div class="opp-abbrev">Customer Data Platform</div>
+      <div class="opp-desc">Current Shell MarTech is primarily Adobe Audience Manager which may not be fit for purpose. Opportunity to move to a CDP that provides equivalent functionality at cheaper TCO — with real-time visitor enrichment, segmentation, cross-device stitching and audience activation.</div>
+      <div class="opp-tools">
+        <span class="tool-tag">LiveRamp</span>
+        <span class="tool-tag">Tealium</span>
+        <span class="tool-tag">Treasure Data</span>
+        <span class="tool-tag">Infosum</span>
+      </div>
+    </div>
+    <div class="opp-card fu">
+      <div class="opp-priority">Priority 5</div>
+      <div class="opp-value">$3<span>M value at risk</span></div>
+      <div class="opp-name">Data Clean Rooms</div>
+      <div class="opp-abbrev">DCR · Data Collaboration</div>
+      <div class="opp-desc">Data Clean Rooms allow Shell to integrate and share first-party data with varied partners and provide a way to track and measure ad impacts even without 3PC — reducing reliance on Walled Gardens (Meta, Google, Amazon). Allows identification of cohorts for paid media targeting.</div>
+      <div class="opp-tools">
+        <span class="tool-tag active">Infosum ✓ Pilot</span>
+        <span class="tool-tag active">AMC ✓ Pilot</span>
+        <span class="tool-tag">Habu/Snowflake</span>
+      </div>
+    </div>
+    <div class="opp-card fu">
+      <div class="opp-priority">Priority 6</div>
+      <div class="opp-value">$8<span>M value at risk</span></div>
+      <div class="opp-name">Identity Resolution</div>
+      <div class="opp-abbrev">Cookieless ID</div>
+      <div class="opp-desc">Shell's ECID is a 3PC-based identifier with limited lifespan. Many device manufacturers including Apple and Google are removing the ability to share unique device identifiers (GAID). Integrating an ID Resolution platform creates a common identifier across platforms for persistent tracking.</div>
+      <div class="opp-tools">
+        <span class="tool-tag">LiveRamp</span>
+        <span class="tool-tag">Tealium</span>
+        <span class="tool-tag">Amperity</span>
+        <span class="tool-tag">Listrak</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RISK BAND -->
+<div class="risk-band" id="risk">
+  <div class="risk-band-inner">
+    <div class="sec-eyebrow">
+      <div class="sec-num" style="color:var(--green)">03</div>
+      <div class="sec-line" style="background:var(--mid)"></div>
+      <div class="sec-tag" style="color:#666">Risk Assessment · Targeting / Measurement / Optimisation</div>
+    </div>
+    <h2 class="sec-h2" style="color:var(--white)">Impact of <em>3PC Loss</em></h2>
+    <p class="sec-intro" style="color:#555">Privacy-led technology and audience solutions are required to mitigate against the impact of 3PC loss across three critical paid media functions.</p>
+
+    <div class="risk-grid">
+      <div class="risk-cell r-targeting fu">
+        <div class="risk-type">Targeting</div>
+        <div class="risk-impact">13–82%</div>
+        <p class="risk-note">of total applicable spend up to <strong style="color:#fff">$32M at risk</strong>. 13% directly dependent on 3PC. Up to 82% dependent on platform-owned 2P audiences pending Google Privacy Sandbox launch.</p>
+        <div class="risk-solutions">
+          <div class="risk-sol-label">Solutions</div>
+          <div class="risk-sol-item">Data Clean Rooms</div>
+          <div class="risk-sol-item">Deterministic &amp; Probabilistic Alternative IDs</div>
+          <div class="risk-sol-item">Advanced Modelled Data: Predictive, Contextual</div>
+          <div class="risk-sol-item">Cohort-Based Targeting</div>
+        </div>
+      </div>
+      <div class="risk-cell r-measurement fu">
+        <div class="risk-type">Measurement</div>
+        <div class="risk-impact amber">80%</div>
+        <p class="risk-note">of total traffic already not available for marketing purposes. Due to Safari limitations and current opt-in rates, Shell can only measure <strong style="color:#fff">20% of total users</strong>. GA Universal Analytics sunset compounds this further.</p>
+        <div class="risk-solutions">
+          <div class="risk-sol-label">Solutions</div>
+          <div class="risk-sol-item">GA4 &amp; Tealium Event Streams</div>
+          <div class="risk-sol-item">Consent Management Systems</div>
+          <div class="risk-sol-item">Data Clean Rooms</div>
+          <div class="risk-sol-item">Identity Resolution</div>
+        </div>
+      </div>
+      <div class="risk-cell r-optimisation fu">
+        <div class="risk-type">Optimisation</div>
+        <div class="risk-impact green-col">Low Direct</div>
+        <p class="risk-note">Retargeting and re-engagement spend is too low to take into consideration as direct 3PC risk. However, key projects <strong style="color:#fff">CCX and TAC</strong> have long-term roadmap dependencies on optimisation capabilities.</p>
+        <div class="risk-solutions">
+          <div class="risk-sol-label">Mitigation</div>
+          <div class="risk-sol-item">Server-Side Event Collection (CAPI)</div>
+          <div class="risk-sol-item">First-Party Signal Enrichment</div>
+          <div class="risk-sol-item">Consent-Driven Audience Activation</div>
+          <div class="risk-sol-item">CDP Audience Segmentation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CURRENT vs FUTURE STATE -->
+<section class="section" id="state">
+  <div class="sec-eyebrow">
+    <div class="sec-num">04</div>
+    <div class="sec-line"></div>
+    <div class="sec-tag">Architecture · Current State vs Future State</div>
+  </div>
+  <h2 class="sec-h2">AdTech Stack <em>Evolution</em></h2>
+  <p class="sec-intro">Shell's AdTech architecture is evolving from a fragmented Adobe-centric stack to a privacy-first, server-side, first-party data infrastructure designed for the cookieless era.</p>
+
+  <div class="state-compare">
+    <div class="state-col">
+      <div class="state-header">
+        <div class="state-label current">Current State</div>
+        <div class="state-badge current">2023 · As-Is</div>
+      </div>
+      <div class="state-body">
+        <div class="state-row fu"><div class="state-row-dot dot-grey"></div><div class="state-row-text">Adobe Audience Manager (AAM / AEP)<span>Primary DMP/CDP — ageing platform, potential TCO optimisation opportunity</span></div></div>
+        <div class="state-row fu"><div class="state-row-dot dot-grey"></div><div class="state-row-text">Adobe Launch (Tag Management)<span>Client-side tag deployment — impacted by browser 3PC blocking</span></div></div>
+        <div class="state-row fu"><div class="state-row-dot dot-grey"></div><div class="state-row-text">Evidon (Consent — legacy)<span>Being evaluated for replacement; not fit for current regulatory requirements</span></div></div>
+        <div class="state-row fu"><div class="state-row-dot dot-grey"></div><div class="state-row-text">Client-side data collection only<span>80% of cookie-based traffic already unavailable; no server-side fallback</span></div></div>
+        <div class="state-row fu"><div class="state-row-dot dot-grey"></div><div class="state-row-text">Adobe Analytics + GA Universal<span>GA Universal sunsetting — active gap in analytics capability</span></div></div>
+        <div class="state-row fu"><div class="state-row-dot dot-grey"></div><div class="state-row-text">No Data Clean Room<span>Full reliance on Walled Gardens — Meta, Google, Amazon</span></div></div>
+        <div class="state-row fu"><div class="state-row-dot dot-grey"></div><div class="state-row-text">ECID (3PC-based identifier)<span>Limited lifespan; will not survive 3PC deprecation</span></div></div>
+        <div class="state-row fu"><div class="state-row-dot dot-grey"></div><div class="state-row-text">Consent stored in browser only<span>Shell has no visibility into consent data; 20% opt-in rate</span></div></div>
+      </div>
+    </div>
+    <div class="state-col">
+      <div class="state-header">
+        <div class="state-label future">Future State</div>
+        <div class="state-badge future">Target · Post-2024</div>
+      </div>
+      <div class="state-body">
+        <div class="state-row fu"><div class="state-row-dot dot-green"></div><div class="state-row-text">CDP (Audience Streams via Tealium or LiveRamp)<span>Visitor enrichment, segmentation, cross-device stitching, real-time action platform</span></div></div>
+        <div class="state-row fu"><div class="state-row-dot dot-green"></div><div class="state-row-text">Tealium (Tag &amp; Event Stream Management)<span>Server-side data collection — bypasses browser blocking; already WIP</span></div></div>
+        <div class="state-row fu"><div class="state-row-dot dot-green"></div><div class="state-row-text">OneTrust / TIQ (Consent Management Platform)<span>Doubles consent rate; stores consent server-side; app opt-out in-product</span></div></div>
+        <div class="state-row fu"><div class="state-row-dot dot-green"></div><div class="state-row-text">Server-Side API Event Collection (CAPI)<span>Reduces 3PC data loss from 80% to 30%; direct connection to ad platforms</span></div></div>
+        <div class="state-row fu"><div class="state-row-dot dot-green"></div><div class="state-row-text">GA4 Enterprise (GDPR-compliant cross-device)<span>Regional EU collection servers; IP discarding; encrypted data transmission</span></div></div>
+        <div class="state-row fu"><div class="state-row-dot dot-green"></div><div class="state-row-text">Data Clean Rooms (Infosum, AMC, Habu)<span>Pilots planned — enables measurement without 3PC; reduces Walled Garden reliance</span></div></div>
+        <div class="state-row fu"><div class="state-row-dot dot-green"></div><div class="state-row-text">Identity Resolution (LiveRamp, Tealium)<span>Common identifier across platforms; persistent cross-device profile stitching</span></div></div>
+        <div class="state-row fu"><div class="state-row-dot dot-green"></div><div class="state-row-text">LMA Onboarding: 6Sense, Madison Logic, Stich<span>Brought onto Shell IT support; governed and integrated into architecture</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA IMPACT -->
+<div class="bg-pale">
+  <div class="section">
+    <div class="sec-eyebrow">
+      <div class="sec-num">05</div>
+      <div class="sec-line"></div>
+      <div class="sec-tag">Media Impact · UK SVP MMM</div>
+    </div>
+    <h2 class="sec-h2">Media <em>Value at Stake</em></h2>
+    <p class="sec-intro">Extrapolating from UK SVP Marketing Mix Modelling data to the global digital media picture reveals a significant potential margin uplift from effective digital media investment.</p>
+
+    <div class="media-grid">
+      <div class="media-cell fu">
+        <div class="media-num">2.21</div>
+        <div class="media-label">SVP ROI for Digital Media Campaigns</div>
+        <div class="media-note">SVP margin uplift as a result of digital media campaigns only. CR margins will be higher once CR MMM models are developed for UK.</div>
+      </div>
+      <div class="media-cell fu">
+        <div class="media-num">$220M</div>
+        <div class="media-label">Potential Margin Uplift (Global)</div>
+        <div class="media-note">Assuming 50% of global $200M media spend goes to digital media with Shell's benchmark ROI of 1.2× — the potential margin uplift is $220M.</div>
+      </div>
+      <div class="media-cell fu">
+        <div class="media-num">$3.6M</div>
+        <div class="media-label">OP23 Investment Plan Requested</div>
+        <div class="media-note">OP23 plan aligned between Paid Media &amp; IT. Awaiting confirmation on 2024 funding. In parallel, up to $3.2M in TCO savings opportunity identified.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RECOMMENDATIONS -->
+<section class="section" id="recommendations">
+  <div class="sec-eyebrow">
+    <div class="sec-num">06</div>
+    <div class="sec-line"></div>
+    <div class="sec-tag">Recommendations / Next Steps</div>
+  </div>
+  <h2 class="sec-h2">Four <em>Actions</em> to Take Now</h2>
+  <p class="sec-intro">Prioritised actions aligned between IT, Business and SOM to protect Shell's paid media investment and build a privacy-first AdTech infrastructure.</p>
+
+  <div class="recs-grid">
+    <div class="rec-card fu" data-step="01">
+      <div class="rec-tag">Step 01 · Immediate</div>
+      <div class="rec-title">Secure 2024 Budget</div>
+      <div class="rec-body">OP23 plan has been created and aligned between stakeholders. In total, Paid Media's OP23 plan is requesting <strong>up to $3.6M</strong> for the next year's programme of work. Awaiting confirmation on funding. Without budget confirmation, solutions remain in assessment and the 3PC cliff edge approaches unmitigated.</div>
+      <div class="rec-owner">
+        <div class="rec-owner-dot"></div>
+        <div class="rec-owner-text">Owner: IDTM (Rami) · Paid Media SME: Hitesh · IT Product Mgr: Hasan</div>
+      </div>
+    </div>
+    <div class="rec-card fu" data-step="02">
+      <div class="rec-tag">Step 02 · Q3 2023</div>
+      <div class="rec-title">Solution Assessment</div>
+      <div class="rec-body">Pending budget confirmation, multiple priorities need detailed assessment before implementation. Assessments require <strong>detailed review and alignment with IT Product Teams and Architecture</strong>. Six workstreams: CMP selection, Data Collection platform, Analytics (GA4), Data Clean Rooms, Identity Resolution / CDP, and LMA onboarding.</div>
+      <div class="rec-owner">
+        <div class="rec-owner-dot"></div>
+        <div class="rec-owner-text">Owner: Hitesh, Samrat, Fernanda (SOM) · IT Architect: Samrat</div>
+      </div>
+    </div>
+    <div class="rec-card fu" data-step="03">
+      <div class="rec-tag">Step 03 · Q4 2023–2024</div>
+      <div class="rec-title">Implementation</div>
+      <div class="rec-body">Once solutions are agreed and aligned between IT, Business and SOM, initiate projects to implement. <strong>Priority order: CMP → Event Streams (CAPI) → GA4 → Data Clean Rooms → Identity Resolution → CDP</strong>. Onboard high-risk LMAs to Shell IT support: 6Sense, Madison Logic, Stich.</div>
+      <div class="rec-owner">
+        <div class="rec-owner-dot"></div>
+        <div class="rec-owner-text">Owner: IT PM (TBD per project)</div>
+      </div>
+    </div>
+    <div class="rec-card fu" data-step="04">
+      <div class="rec-tag">Step 04 · Parallel Track</div>
+      <div class="rec-title">Assess TCO Opportunities</div>
+      <div class="rec-body">In parallel with evaluating new solutions, assess the existing MarTech stack for duplication and opportunities to reduce TCO. Adobe Audience Manager is the primary opportunity. <strong>Potential savings of up to $3.2M</strong> — offsetting a significant portion of the new investment required. Evaluate COTS alternatives providing similar or enhanced functionality.</div>
+      <div class="rec-owner">
+        <div class="rec-owner-dot"></div>
+        <div class="rec-owner-text">Owner: IDTM (Rami) · IT Architect: Samrat</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS LANDSCAPE -->
+<div class="bg-pale">
+  <section class="section" id="solutions">
+    <div class="sec-eyebrow">
+      <div class="sec-num">07</div>
+      <div class="sec-line"></div>
+      <div class="sec-tag">Solutions Landscape · Evaluated Tools</div>
+    </div>
+    <h2 class="sec-h2">Platform <em>Landscape</em></h2>
+    <p class="sec-intro">The range of AdTech solutions which Shell has either onboarded or is planning to onboard puts the programme in a strong position. The key ones are Tealium Event Streams (WIP), GA4 Enterprise (WIP), Data Clean Rooms (WIP — Infosum &amp; AMC pilots planned), Consent Management Systems, and Identity Resolution.</p>
+
+    <div class="solutions-grid">
+      <div class="sol-card fu">
+        <div class="sol-cat">CMP</div>
+        <div class="sol-title">Consent Management</div>
+        <ul class="sol-list">
+          <li>OneTrust</li>
+          <li>CookieYes</li>
+          <li>Osano</li>
+          <li>UserCentrics</li>
+          <li>Quantcast Choice</li>
+        </ul>
+      </div>
+      <div class="sol-card fu">
+        <div class="sol-cat">Data Collection</div>
+        <div class="sol-title">Event Streams &amp; Server-Side</div>
+        <ul class="sol-list">
+          <li>Google DV360 <span class="used">In use</span></li>
+          <li>Tealium</li>
+          <li>Madison Logic <span class="used">LMA</span></li>
+          <li>6Sense <span class="used">LMA</span></li>
+          <li>LiveRamp</li>
+          <li>Ad.Lib</li>
+          <li>Treasure Data CDP</li>
+        </ul>
+      </div>
+      <div class="sol-card fu">
+        <div class="sol-cat">ID Resolution</div>
+        <div class="sol-title">Identity &amp; Profile Stitching</div>
+        <ul class="sol-list">
+          <li>LiveRamp</li>
+          <li>Treasure Data CDP</li>
+          <li>Amperity</li>
+          <li>Listrak</li>
+          <li>Tealium</li>
+          <li>Infosum</li>
+        </ul>
+      </div>
+      <div class="sol-card fu">
+        <div class="sol-cat">Compliance / DCR</div>
+        <div class="sol-title">Data Clean Rooms</div>
+        <ul class="sol-list">
+          <li>Infosum <span class="used">Pilot</span></li>
+          <li>Amazon Marketing Cloud <span class="used">Pilot</span></li>
+          <li>Snowflake / Habu</li>
+          <li>LiveRamp</li>
+          <li>Disney (DCR)</li>
+        </ul>
+      </div>
+      <div class="sol-card fu">
+        <div class="sol-cat">Analytics</div>
+        <div class="sol-title">Measurement &amp; Attribution</div>
+        <ul class="sol-list">
+          <li>Google Analytics 4 <span class="used">LMA/WIP</span></li>
+          <li>Kochava <span class="used">In use</span></li>
+          <li>Adobe Analytics <span class="used">In use</span></li>
+        </ul>
+      </div>
+      <div class="sol-card fu">
+        <div class="sol-cat">Media Partners</div>
+        <div class="sol-title">Agency &amp; Activation</div>
+        <ul class="sol-list">
+          <li>EssenceMediacom <span class="used">In use</span></li>
+          <li>Merkle <span class="used">In use</span></li>
+          <li>Sprinklr <span class="used">In use</span></li>
+          <li>Smartly.io</li>
+          <li>6Sense <span class="used">Onboarding</span></li>
+          <li>Madison Logic <span class="used">Onboarding</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div class="footer-tag">Shell · Paid Media AdTech · Confidential</div>
+    <h3>IT Strategy &amp; Assessment 2023</h3>
+    <p>A combined IT and Business AdTech strategy to navigate the deprecation of third-party cookies, tightening data privacy regulations, and the imperative to build a first-party data infrastructure fit for the next decade of digital marketing.</p>
+  </div>
+  <div class="footer-right">
+    <div class="footer-tag">Authors</div>
+    <div class="footer-authors">
+      <div class="footer-author"><strong>Eric Chen</strong> — IDT Advisor, Connected Customer</div>
+      <div class="footer-author"><strong>Hitesh Bhatt</strong> — Global Media AdTech Lead</div>
+      <div class="footer-author"><strong>Rahul Upadhay</strong> — MarTech Business Director</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll-triggered fade-up
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
